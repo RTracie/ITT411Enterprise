@@ -102,7 +102,7 @@
             <h2>Courses</h2>
     <?php 
             echo"<table id='table1'>";
-            echo"<tr><th>Course Code</th><th>Course</th><th>Lecturer</th><th>Coursework</th><th>Exam Score</th><th>Total Score</th><th>Grade</th><th>Grade Award</th></tr>";
+            echo"<tr><th>Course Code</th><th>Course</th><th>Lecturer</th><th>Coursework/60</th><th>Exam Score/40</th><th>Total Score/100</th><th>Grade</th><th>Grade Award</th></tr>";
             while($row=$result->fetch_assoc())
             { 
                 echo"<tr><td>$row[coursecode]</td><td>$row[coursetitle]</td><td>$row[title] $row[fname] $row[lname]</td><td>$row[enrolmentCourseWorkGrade]</td><td>$row[enrolmentFinalExamORProjectGrade]</td><td>$row[enrolmentFinalGrade]</td><td>$row[grade]</td><td>$row[award]</td></tr>";
