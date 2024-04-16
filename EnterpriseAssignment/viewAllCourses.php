@@ -25,11 +25,11 @@
 	            echo"<table id='table1'>";
 	            echo"<tr><th> Course Code </th><th> Course Title </th><th> Credits </th><th> Degree Level </th></tr>";
 	            while($row=$result->fetch_assoc())
-	            { //2nd open 
+	            { 
 	                echo"<tr><td><a href='viewSingleCourse.php?id=$row[coursecode]'>$row[coursecode]<a/></td><td>$row[coursetitle]</td><td>$row[coursecredits]</td><td>$row[coursedegreelevel]</td></tr>";
-	            } //2nd close
+	            }
 	            echo"</table";
-	        } //1st close
+	        }
         ?>        
     </body>
 </html>
