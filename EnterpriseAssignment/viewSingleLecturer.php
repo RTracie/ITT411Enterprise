@@ -114,7 +114,6 @@
             } 
             echo"</table>";
         }
-    ?>
-        <!-- <div><form action="addcourse.php" method="POST"><input type ="submit" name="submit" value="select"/></form></div> -->        
+    ?>   
     </body>
 </html>
