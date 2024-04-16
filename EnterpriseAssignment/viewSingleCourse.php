@@ -83,6 +83,8 @@
 
         $setQuery="select * from Courses where coursecode = '$_GET[id]';";
         $setQueryResult = mysqli_query($connection,$setQuery)or die('Error query not working');
+        $preReqCodeArray = array();
+        $preReqTitleArray = array();
         if($setQueryResult->num_rows>0)
         {
             while($row=$setQueryResult->fetch_assoc())
@@ -92,7 +94,21 @@
                 $_SESSION['coursecredits'] = $row['coursecredits'];
                 $_SESSION['coursedegreelevel'] = $row['coursedegreelevel'];
             }
+            $prereq = "select prerequisite, (select Courses.coursetitle from Courses where Prerequisites.prerequisite = Courses.coursecode) 
+            as 'Title' from Courses, Prerequisites where Prerequisites.coursecode = Courses.coursecode and Prerequisites.coursecode = '$_GET[id]'";
+            $getprereq = mysqli_query($connection,$prereq)or die('Error query not working');
+            if($getprereq->num_rows>0)
+            {
+                while($row=$getprereq->fetch_assoc())
+                {
+                    $preReqCodeArray[] = $row['prerequisite']; 
+                    $preReqTitleArray[] = $row['Title'];
+                }
+            }
+            else
+            {}               
         }
+
         $viewquery="select * from Courses, Course_Schedule, Lecturers
         where Course_Schedule.courseScheduleCode = Courses.coursecode 
         and Lecturers.lecturerID = Course_Schedule.courseScheduleLecturerID
@@ -100,9 +116,23 @@
         $result=mysqli_query($connection,$viewquery)or die('Error query not working');
         if($result->num_rows>0) 
         { 
-    ?>
-            <h1><?php echo  $_SESSION['coursecode'].": ".$_SESSION['coursetitle']; ?></h1>
-            <h2>Sections</h2>
+    ?>      <h1><?php echo  $_SESSION['coursecode'].": ".$_SESSION['coursetitle']; ?></h1>
+            <h2>Prerequisites</h2>
+    <?php 
+            if(sizeof($preReqCodeArray) > 0)
+            {
+                $x = 0;
+                foreach ($preReqCodeArray as $coursecode)
+                {
+                    echo $coursecode.": ".$preReqTitleArray[0]."<br>";
+                    $x += 1;
+                }
+            }
+            else
+            {
+                echo "NO PREREQUISITES REQUIRED";
+            }
+    ?>      <h2>Sections</h2>            
     <?php 
             echo"<table id='table1'>";
             echo"<tr><th>Day</th><th>Time</th><th>Classroom</th><th>Lecturer</th></tr>";
@@ -116,6 +146,6 @@
             } 
             echo"</table>";
         }
-    ?>      
+    ?>     
     </body>
 </html>
