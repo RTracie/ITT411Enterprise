@@ -1,7 +1,7 @@
 # ITT411Enterprise
 Final Project Files
 
-I used VS Code to create the files, and Xampp as the server
+I used VS Code to create the files, and Xampp-Apache as the server
 
 1. create the database from the datbase file
 2. read thru the database file, the usernames and passwords are there in a table
