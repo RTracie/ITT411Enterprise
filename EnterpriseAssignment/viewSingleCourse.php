@@ -80,6 +80,7 @@
             else if ($data == 12){return strval($data) . ":00 PM";}
             else{return strval($data) . ":00 AM";}
         }
+
         $setQuery="select * from Courses where coursecode = '$_GET[id]';";
         $setQueryResult = mysqli_query($connection,$setQuery)or die('Error query not working');
         if($setQueryResult->num_rows>0)
@@ -115,7 +116,6 @@
             } 
             echo"</table>";
         }
-    ?>
-        <!-- <div><form action="addcourse.php" method="POST"><input type ="submit" name="submit" value="select"/></form></div> -->        
+    ?>      
     </body>
 </html>
