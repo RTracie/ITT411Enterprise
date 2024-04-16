@@ -15,25 +15,21 @@
                 }
             </style>
     </head>
-
     <body>
         <h1> View All Courses</h1>
-
         <?php
-        #coursecode,coursetitle,coursecredits,coursedegreelevel
-        $query="select * from Courses"; 
-        $result=mysqli_query($connection,$query)or die('Error query not working');
-        if($result->num_rows>0)
-        { 
-            echo"<table id='table1'>";
-            echo"<tr><th> Course Code </th><th> Course Title </th><th> Credits </th><th> Degree Level </th></tr>";
-            while($row=$result->fetch_assoc())
-            { //2nd open 
-                echo"<tr><td><a href='viewSingleCourse.php?id=$row[coursecode]'>$row[coursecode]<a/></td><td>$row[coursetitle]</td><td>$row[coursecredits]</td><td>$row[coursedegreelevel]</td></tr>";
-            } //2nd close
-            echo"</table";
-        } //1st close
-        ?>
-        
+	        $query="select * from Courses"; 
+	        $result=mysqli_query($connection,$query)or die('Error query not working');
+	        if($result->num_rows>0)
+	        { 
+	            echo"<table id='table1'>";
+	            echo"<tr><th> Course Code </th><th> Course Title </th><th> Credits </th><th> Degree Level </th></tr>";
+	            while($row=$result->fetch_assoc())
+	            { //2nd open 
+	                echo"<tr><td><a href='viewSingleCourse.php?id=$row[coursecode]'>$row[coursecode]<a/></td><td>$row[coursetitle]</td><td>$row[coursecredits]</td><td>$row[coursedegreelevel]</td></tr>";
+	            } //2nd close
+	            echo"</table";
+	        } //1st close
+        ?>        
     </body>
 </html>
