@@ -81,13 +81,12 @@
             position: fixed;
             top: 10px;
             right: 10px;
-        }
+            }
         </style>
     </head>
     <body>
-            <a href="#" class="fixed-element">Registry</a>
-        <div class="loginbox">
-            
+        <a href="#" class="fixed-element">Registry</a>
+        <div class="loginbox">            
             <h1>Registry Login</h1>
             <form action="registryLoginCheck.php" method="POST">                    
                 <p>Username</p>
