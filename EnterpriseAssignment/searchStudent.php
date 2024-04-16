@@ -7,18 +7,16 @@
     <head>        
         <meta charset="utf-8">
         <title>Search</title>
-       <link rel="sty lesheet" href="style.css">
-       <style>
+        <link rel="sty lesheet" href="style.css">
+        <style>
             #search{border-radius: 8px;padding: 5px 6px;margin: 4px 0}
             P{font-size: 21px;}
             input[type="submit"]{border-radius: 10px;padding:3px 5px;margin-top: 5px;}
-       </style>
+        </style>
     </head>
     <body>
         <div class="center">
-
-        <h1>Search Students</h1>
-
+            <h1>Search Students</h1>
             <form action="studentFinder.php" method="POST">
                 <div>
                     <p>Search by Student ID</p>
