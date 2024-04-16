@@ -47,7 +47,6 @@
 
     <body>
     <?php
-
 	function QUERY()
         {
 		$data="select * from Students, Grades, Enrolment, Course_Schedule, Courses, Lecturers 
@@ -59,7 +58,6 @@
      		and enrolmentStudentID = $_GET[id]";
             return $data;
         }
-
 
         $setQuery="select * from Students where studentID = $_GET[id] ;";
         $setQueryResult = mysqli_query($connection,$setQuery)or die('Error query not working');
