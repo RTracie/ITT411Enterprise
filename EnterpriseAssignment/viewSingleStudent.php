@@ -90,7 +90,8 @@
             $result=mysqli_query($connection,QUERY())or die('Error query not working');
         }        
         if($result->num_rows>0) 
-        {?>
+        {
+    ?>
             <div>
                 <h1>Student Profile</h1>
                 <p>Full Name: <span id="name"><?php echo $_SESSION['fname']." ".$_SESSION['mname']." ".$_SESSION['lname']; ?></span></p>
@@ -120,6 +121,7 @@
                 <p>Contact: <span id="kinContact"><?php echo $_SESSION['nextOfKinContact']; ?></span></p> 
             </div>
     <?php
-        } ?>     
+        } 
+    ?>     
     </body>
 </html>
