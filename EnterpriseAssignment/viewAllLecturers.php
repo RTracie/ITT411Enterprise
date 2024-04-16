@@ -20,20 +20,19 @@
         <h1> View All Lecturers</h1>
 
         <?php
-        #studentID,fname,mname,lname,Semail,Pemail,address,Mtele,Htele,Wtele,nextOfKin,nextOfKinContact,program,GPA
-        $query="select * from Lecturers"; 
-        $result=mysqli_query($connection,$query)or die('Error query not working');
-        if($result->num_rows>0)
-        { 
-            echo"<table id='table1'>"; 
-            echo"<tr><th>Lecturer ID</th><th>Full Name</th><th> Department </th><th> Role </th></tr>";
-            while($row=$result->fetch_assoc())
-            { //2nd open 
-                echo"<tr><td><a href='viewSingleLecturer.php?id=$row[lecturerID]'>$row[lecturerID]<a/></td><td>$row[title] $row[fname] $row[lname]</td><td>$row[department]</td><td>$row[position]</td></tr>";
-            } //2nd close
-            echo"</table";
-            $result -> free_result();
-        } //1st close
+	        $query="select * from Lecturers"; 
+	        $result=mysqli_query($connection,$query)or die('Error query not working');
+	        if($result->num_rows>0)
+	        { 
+	            echo"<table id='table1'>"; 
+	            echo"<tr><th>Lecturer ID</th><th>Full Name</th><th> Department </th><th> Role </th></tr>";
+	            while($row=$result->fetch_assoc())
+	            {
+	                echo"<tr><td><a href='viewSingleLecturer.php?id=$row[lecturerID]'>$row[lecturerID]<a/></td><td>$row[title] $row[fname] $row[lname]</td><td>$row[department]</td><td>$row[position]</td></tr>";
+	            }
+	            echo"</table";
+	            $result -> free_result();
+	        }
         ?>
         
     </body>
