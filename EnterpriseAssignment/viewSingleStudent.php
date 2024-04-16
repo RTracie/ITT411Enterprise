@@ -1,6 +1,6 @@
 <?php
 	include "connect.php";
-    session_start();
+	session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,10 +48,15 @@
     <body>
     <?php
 
-        function QUERY()
+	function QUERY()
         {
-            $data="select * from Students, Grades, Enrolment, Course_Schedule, Courses, Lecturers 
-        where gradeScaleHigh >= enrolmentFinalGrade and gradeScaleLow <= enrolmentFinalGrade and Enrolment.enrolmentStudentID = Students.studentID and Enrolment.enrolmentSectionCode = Course_Schedule.courseScheduleSection and Course_Schedule.courseScheduleCode = Courses.coursecode and Lecturers.lecturerID = Course_Schedule.courseScheduleLecturerID and enrolmentStudentID = $_GET[id]";
+		$data="select * from Students, Grades, Enrolment, Course_Schedule, Courses, Lecturers 
+  		where gradeScaleHigh >= enrolmentFinalGrade and gradeScaleLow <= enrolmentFinalGrade 
+     		and Enrolment.enrolmentStudentID = Students.studentID 
+     		and Enrolment.enrolmentSectionCode = Course_Schedule.courseScheduleSection 
+     		and Course_Schedule.courseScheduleCode = Courses.coursecode 
+     		and Lecturers.lecturerID = Course_Schedule.courseScheduleLecturerID 
+     		and enrolmentStudentID = $_GET[id]";
             return $data;
         }
 
@@ -81,7 +86,8 @@
         $result=mysqli_query($connection,QUERY())or die('Error query not working');
         if($result->num_rows<1)
         {
-            $setFinalGrade="update Enrolment set enrolmentFinalGrade = (select sum(enrolmentCourseWorkGrade + enrolmentFinalExamORProjectGrade)) where enrolmentStudentID = $_SESSION[studentID];";
+            $setFinalGrade="update Enrolment set enrolmentFinalGrade = (select sum(enrolmentCourseWorkGrade + enrolmentFinalExamORProjectGrade)) 
+	    where enrolmentStudentID = $_SESSION[studentID];";
             $result=mysqli_query($connection,$setFinalGrade)or die('Error query not working');
             $result=mysqli_query($connection,QUERY())or die('Error query not working');
         }        
@@ -116,8 +122,6 @@
                 <p>Contact: <span id="kinContact"><?php echo $_SESSION['nextOfKinContact']; ?></span></p> 
             </div>
     <?php
-        }
-    ?>
-        <!-- <div><form action="addcourse.php" method="POST"><input type ="submit" name="submit" value="select"/></form></div> -->        
+        } ?>     
     </body>
 </html>
